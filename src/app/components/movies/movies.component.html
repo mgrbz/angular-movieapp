@@ -1,18 +1,54 @@
 
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-3">
-      <img src="../../../assets/img/1.jpeg" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-9">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <div>
-          <a class="btn btn-sm btn-outline-primary" [routerLink]="['/movies/1']" >Details</a>
-          <button class="btn btn-sm btn-primary ms-1" (click)="addToList($event)" >Listeye Ekle</button>
+<div class="alert alert-danger" *ngIf="error">
+  {{error}}
+</div>
+
+<div *ngIf="filteredMovies.length > 0 else emptyTemplate ">
+  <h1>{{title}}</h1>
+
+  <div class="mb-3">
+    <input 
+      type="text" 
+      class="form-control"
+      placeholder="Search"
+      [(ngModel)]="filterText"
+      (ngModelChange)="onInputChange()"  
+    >
+  </div>
+
+  <ng-template [ngTemplateOutlet]="movieList"></ng-template>
+
+</div>
+
+
+<ng-template #movieList>
+
+
+  <div class="card mb-3" style="max-width: 540px;" *ngFor="let movie of filteredMovies" >
+    <div class="row g-0">
+      <div class="col-md-3">
+        <img src="../../../assets/img/{{movie.imageUrl}}" class="img-fluid rounded-start" alt="{{movie.title}}">
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.title}}</h5>
+          <p class="card-text">{{movie.description}}</p>
+          <div>
+            <a class="btn btn-sm btn-outline-primary" [routerLink]="['/movies/{{movie.id}}']" >Details</a>
+            <button class="btn btn-sm btn-primary ms-1" (click)="addToList($event)" >Listeye Ekle</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+</ng-template>
+
+
+<ng-template #emptyTemplate>
+
+  <div class="alert alert-danger" >
+    Film bulunamadı.
+  </div>
+</ng-template>
+
