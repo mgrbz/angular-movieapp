@@ -11,6 +11,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { MovieComponent } from './components/movies/movie/movie.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AlertifyService } from './services/alertify.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AlertifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
