@@ -24,10 +24,10 @@ export class MoviesService{
     )
   }
 
-  getMoviesById(movieId: number){
+  getMovieById(movieId: number): Observable<IMovie>{
     let newUrl = `${this.url}/${movieId}`;
 
-    return this.http.get(newUrl).pipe(
+    return this.http.get<IMovie>(newUrl).pipe(
       tap(data => console.log('getMovieById service data: ', data)),
       catchError(this.handleError)
     )

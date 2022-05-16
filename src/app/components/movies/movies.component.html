@@ -33,7 +33,7 @@
           <h5 class="card-title">{{movie.title | titlecase}}</h5>
           <p class="card-text">{{movie.description | summary : 50}}</p>
           <div>
-            <a class="btn btn-sm btn-outline-primary" [routerLink]="['/movies/{{movie.id}}']" >Details</a>
+            <a class="btn btn-sm btn-outline-primary" routerLink="/movies/{{movie.id}}" >Details</a>
             <button class="btn btn-sm btn-primary ms-1" (click)="addToList($event)" >Listeye Ekle</button>
           </div>
         </div>
