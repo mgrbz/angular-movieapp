@@ -1,32 +1,28 @@
 
-<form>
+<form [formGroup]="movieForm" >
   <div class="mb-3">
     <label for="title" class="form-label">Title</label>
-    <input type="text" class="form-control" id="title" >
+    <input type="text" class="form-control" id="title" formControlName="title" >
   </div>
   
   <div class="mb-3">
     <label for="description" class="form-label">Description</label>
-    <textarea type="text" class="form-control" id="description" ></textarea>
+    <textarea type="text" class="form-control" id="description" formControlName="description" ></textarea>
   </div>
 
   <div class="mb-3">
     <label for="imageUrl" class="form-label">Image Url</label>
-    <input type="text" class="form-control" id="imageUrl" >
+    <input type="text" class="form-control" id="imageUrl" formControlName="imageUrl" >
   </div>
 
   <div class="mb-3">
     <label for="categoryId" class="form-label">Category Name</label>
-    <select name="categoryId" class="form-select" >
+    <select name="categoryId" class="form-select" formControlName="categoryId">
       <option value="">Seçiniz</option>
-      <option value="1">Macera</option>
-      <option value="2">Romantik</option>
-      <option value="3">Bilim Kurgu</option>
-      <option value="4">Komedi</option>
-      <option value="5">Savaş</option>
+      <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
     </select>
   </div>
 
 
-  <button type="submit" class="btn btn-primary">Create</button>
+  <button [disabled]="movieForm.invalid" (click)="createMovie()" class="btn btn-primary">Create</button>
 </form>
