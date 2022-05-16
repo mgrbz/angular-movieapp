@@ -26,17 +26,22 @@ export class MoviesComponent{
   ){}
 
   ngOnInit(){
-    this.movieService.getMovies().subscribe(data => {
-      this.movies = data;
-      this.filteredMovies = data;
-    },
-    error => {
-      this.error = error;
-    });
+    this.activatedRoute.params.subscribe(param => {
+      let categoryId = param['categoryId'];
+
+      this.movieService.getMovies(categoryId).subscribe(data => {
+        this.movies = data;
+        this.filteredMovies = data;
+      },
+      error => {
+        this.error = error;
+      });
+
+    })
+
   }
 
   onInputChange(){
-    console.log('onchangeınput filterText: ', this.filterText);
     this.filteredMovies = this.filterText ? 
       this.movies.filter(movie => movie.title.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1 ||
                                   movie.description.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1) : 

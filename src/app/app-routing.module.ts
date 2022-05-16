@@ -2,9 +2,9 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 
-import { MovieCreateComponent } from "./movie-create/movie-create.component";
-import { MovieDetailsComponent } from "./movie-details/movie-details.component";
-import { MoviesComponent } from "./movies/movies.component";
+import { MovieCreateComponent } from "./components/movie-create/movie-create.component";
+import { MovieDetailsComponent } from "./components/movie-details/movie-details.component";
+import { MoviesComponent } from "./components/movies/movies.component";
 
 
 
