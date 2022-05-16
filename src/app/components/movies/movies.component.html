@@ -12,11 +12,10 @@
       class="form-control"
       placeholder="Search"
       [(ngModel)]="filterText"
-      (ngModelChange)="onInputChange()"  
     >
   </div>
 
-  <ng-template [ngTemplateOutlet]="movieList"></ng-template>
+  <ng-template [ngTemplateOutlet]="movieList" [ngTemplateOutletContext]="{filterText: filterText}"></ng-template>
 
 </div>
 
@@ -24,15 +23,15 @@
 <ng-template #movieList>
 
 
-  <div class="card mb-3" style="max-width: 540px;" *ngFor="let movie of filteredMovies" >
+  <div class="card mb-3" style="max-width: 540px;" *ngFor="let movie of filteredMovies | movieFilter: filterText" >
     <div class="row g-0">
       <div class="col-md-3">
         <img src="../../../assets/img/{{movie.imageUrl}}" class="img-fluid rounded-start" alt="{{movie.title}}">
       </div>
       <div class="col-md-9">
         <div class="card-body">
-          <h5 class="card-title">{{movie.title}}</h5>
-          <p class="card-text">{{movie.description}}</p>
+          <h5 class="card-title">{{movie.title | titlecase}}</h5>
+          <p class="card-text">{{movie.description | summary : 50}}</p>
           <div>
             <a class="btn btn-sm btn-outline-primary" [routerLink]="['/movies/{{movie.id}}']" >Details</a>
             <button class="btn btn-sm btn-primary ms-1" (click)="addToList($event)" >Listeye Ekle</button>

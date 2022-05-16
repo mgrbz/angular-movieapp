@@ -13,6 +13,8 @@ import { MovieComponent } from './components/movies/movie/movie.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AlertifyService } from './services/alertify.service';
+import { MovieFilterPipe } from './pipes/moviefilter.pipe';
+import { SummaryPipe } from './pipes/summary.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AlertifyService } from './services/alertify.service';
     MovieDetailsComponent,
     NavbarComponent,
     FooterComponent,
-    CategoryComponent
+    CategoryComponent,
+    MovieFilterPipe,
+    SummaryPipe
   ],
   imports: [
     BrowserModule,

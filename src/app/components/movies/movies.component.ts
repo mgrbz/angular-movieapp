@@ -42,6 +42,7 @@ export class MoviesComponent{
   }
 
   onInputChange(){
+    // movie filtreleme buradanda yapılabilir Pipe lar ilede yapılabilir
     this.filteredMovies = this.filterText ? 
       this.movies.filter(movie => movie.title.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1 ||
                                   movie.description.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1) : 
