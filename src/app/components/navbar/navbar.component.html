@@ -1,1 +1,17 @@
-<h3>Navbar works</h3>
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <div class="container">
+    <a href="/" class="navbar-brand">Angular Movie App</a>
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a [routerLink]="['/movies']" class="nav-link">Movies</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/movies/create"  class="nav-link">Create Movie</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
